@@ -14,9 +14,9 @@ const getContactById = async contactId => {
   const contact = contacts.find(item => item.id === contactId);
   return contact || null;
 };
-const addContact = async data => {
+const addContact = async body => {
   const contacts = await listContacts();
-  const newContact = { id: nanoid(), ...data };
+  const newContact = { id: nanoid(), ...body };
   contacts.push(newContact);
   await fs.writeFile(contactPath, JSON.stringify(contacts, null, 2));
   return newContact || null;
