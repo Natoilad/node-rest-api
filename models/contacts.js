@@ -13,6 +13,7 @@ const getContactById = async contactId => {
   const contact = contacts.find(item => item.id === contactId);
   return contact || null;
 };
+
 const addContact = async body => {
   const contacts = await listContacts();
   const newContact = { id: nanoid(), ...body };
