@@ -1,6 +1,5 @@
 const ctrlWrapper = require('../helpers/ctrlWrapper');
 const { HttpError } = require('../helpers');
-// const contacts = require('../models/contacts');
 const { Contact } = require('../models/contact');
 
 const listContacts = async (req, res) => {
@@ -10,7 +9,6 @@ const listContacts = async (req, res) => {
 
 const getContactById = async (req, res) => {
   const { contactId } = req.params;
-  // const result = await Contact.findOne({ _id: contactId });
   const result = await Contact.findById(contactId, '-createdAt -updatedAt');
   if (!result) {
     throw HttpError(404, 'Not found ');

@@ -6,9 +6,7 @@ const {
 const ctrl = require('../../controllers/contact-controllers.js');
 const { schema } = require('../../models/contact.js');
 const isValidId = require('../../middllware/isValidId.js');
-// const addSchema = require('../../schemas/schemas.js');
 
-// console.log(addSchema);
 const router = express.Router();
 router.get('/', ctrl.listContacts);
 router.get('/:contactId', isValidId, ctrl.getContactById);
