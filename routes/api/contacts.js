@@ -6,19 +6,22 @@ const {
 const ctrl = require('../../controllers/contact-controllers.js');
 const { schema } = require('../../models/contact.js');
 const isValidId = require('../../middllware/isValidId.js');
+const authenticate = require('../../middllware/authenticate.js');
 
 const router = express.Router();
-router.get('/', ctrl.listContacts);
-router.get('/:contactId', isValidId, ctrl.getContactById);
-router.post('/', validBody(schema.addSchema), ctrl.addContact);
+router.get('/', authenticate, ctrl.listContacts);
+router.get('/:contactId', authenticate, isValidId, ctrl.getContactById);
+router.post('/', authenticate, validBody(schema.addSchema), ctrl.addContact);
 router.put(
   '/:contactId',
+  authenticate,
   isValidId,
   validBody(schema.addSchema),
   ctrl.updateContact
 );
 router.patch(
   '/:contactId/favorite',
+  authenticate,
   isValidId,
   validFavoriteBody(schema.updateFavoriteSchema),
   ctrl.updateFavoriteContact
