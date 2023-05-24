@@ -1,4 +1,8 @@
-const { validBody, validFavoriteBody } = require('./middleware');
+const {
+  validBody,
+  validFavoriteBody,
+  validSubscription,
+} = require('./middleware');
 const isValidId = require('./isValidId');
 const authenticate = require('./authenticate');
 
@@ -7,4 +11,5 @@ module.exports = {
   validFavoriteBody,
   isValidId,
   authenticate,
+  validSubscription,
 };

@@ -34,4 +34,16 @@ const validFavoriteBody = schema => {
   return func;
 };
 
-module.exports = { validBody, validFavoriteBody };
+const validSubscription = schema => {
+  const func = (req, res, next) => {
+    const { error } = schema.validate(req.body);
+
+    if (error) {
+      next(HttpError(400, error.message));
+    }
+    next();
+  };
+  return func;
+};
+
+module.exports = { validBody, validFavoriteBody, validSubscription };
