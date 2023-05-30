@@ -6,6 +6,7 @@ const {
   validBody,
   authenticate,
   validSubscription,
+  uploadAvatar,
 } = require('../../middllware');
 
 const { schema } = require('../../models/user');
@@ -25,6 +26,13 @@ router.patch(
   authenticate,
   validSubscription(schema.updateSubscription),
   ctrl.updateSubscription
+);
+
+router.patch(
+  '/avatars',
+  authenticate,
+  uploadAvatar.single('avatar'),
+  ctrl.updateAvatar
 );
 
 module.exports = router;
