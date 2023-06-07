@@ -1,5 +1,5 @@
 # node
-FROM node16.17.0
+FROM node
 
 # папка
 WORKDIR /app
@@ -13,4 +13,11 @@ RUN npm instal
 EXPOSE  3000
 
 CMD [ "npm", "start" ]
+
+
+
+# docker build .
+#docker image
+# docker run -d -p 4000:3000 
  
+
